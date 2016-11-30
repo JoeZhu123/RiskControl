@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/tablecss.css" />
+<script type="text/javascript" src="/static/bootstrap/js/control.js"></script>
+</head>
+<body  onload="time()">
+<table id="customers">
+<tr>
+  <th> </th>
+  <th> </th>
+  <th id="day_now0"></th>
+  <th id="day_now1"></th>
+  <th id="day_now2"></th>
+  <th id="day_now3"></th>
+</tr>
+{% for combin in combins %}
+<tr>
+   <th rowspan="4">{{combin}}</th>
+   <td>组合-指数</td>
+   <td>{{combin.data0}}</td>
+   <td>2972.78</td>
+   <td>5270.20</td>
+   <td>-6231.48</td>
+</tr>
+<tr class="alt">
+   <td>组合-指数(point)</td>
+   <td>{{combin.data1}}</td>
+   <td>14.86</td>
+   <td>26.35</td>
+   <td>-31.16</td>
+</tr>
+<tr>
+   <td>组合-指数(percent)</td>
+   <td>{{combin.data2}}</td>
+   <td>14.86</td>
+   <td>26.35</td>
+   <td>-31.16</td>
+</tr>
+<tr>
+   <td>alpha基差</td>
+   <td>{{combin.alpha_basis}}</td>
+   <td>0.00</td>
+   <td>0.00</td>
+   <td>0.00</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
+
+

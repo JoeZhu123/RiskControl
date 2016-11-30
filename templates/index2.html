@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>风控系统</title>
+<!-- 引入Bootstrap -->
+<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/tablecss.css" />
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
+</head>
+
+<body>
+<h1 class="title">组合管理与导入/导出</h1>
+<form class="form-inline" role="form" method="post" enctype="multipart/form-data" >
+<div class="form-group">
+	<input type="file" name="file"/>
+<!--	 {{uf.as_p}} -->
+</div>
+<input type="submit" class="btn btn-default" value="上传文件"/>
+<input type="button" class="btn btn-default" value="生成组合" onclick=""/>
+<input type="button" class="btn btn-default" value="导出到本地" onclick=""/>
+<div class="form-group">
+	<input type="text" class="form-control" id="name" placeholder="请输入名称">
+</div>
+<div class="checkbox">
+	<label>
+		<input type="checkbox" value="1" name="check_box_list">是否存数据库
+	</label>
+</div>
+<div class="checkbox">
+        <label>
+                <input type="checkbox" value="2" name="check_box_list">是否显示所有组合
+        </label>
+</div>
+
+</form>
+<br/>
+<form role="form">
+	<div class="form-group">
+		<label for="name">选择组合</label>
+		<select class="form-control">
+			<option>IC20160815</option>
+			<option>IC20160810</option>
+			<option>IC20160805</option>
+			<option>IF20160725</option>
+			<option>IF20160801</option>
+		</select>
+		<label for="name">可多选的组合列表</label>
+		<select multiple class="form-control">
+			<option>IC20160815</option>
+                        <option>IC20160810</option>
+                        <option>IC20160805</option>
+                        <option>IF20160725</option>
+                        <option>IF20160801</option>
+		</select>
+	</div>
+</form>
+<br/>
+<div id="data_table">
+<table id="customers">
+<tr>
+  <th>组合</th>
+  <th>股票代码(ID)</th>
+  <th>股票名称</th>
+  <th>数量</th>
+  <th>价格</th>
+  <th>涨跌幅(%)</th>
+  <th>盈亏</th>
+  <th>市值</th>
+</tr>
+<tr class="alt">
+   <th rowspan={{length_lines}}>{{combin}}</th>
+{% for stock in stocks %}
+   <td>{{stock.ID}}</td>
+   <td>{{stock.Name}}</td>
+   <td>{{stock.Volume}}</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+</tr>
+{% endfor %}
+<tr>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+   <td> </td>
+</tr>
+</table>
+</div>
+
+<ul class="breadcrumb">
+  <li><a href="#">返回顶部</a></li>
+  <li><a href="../index/">股票监控</a></li>
+  <li><a href="../index2/">组合管理</a></li>
+</ul>
+</body>
+</html>

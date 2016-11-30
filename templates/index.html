@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>风控系统</title>
+<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/tablecss.css" />
+<script type="text/javascript" src="/static/bootstrap/js/control.js"></script>
+<script>
+function ajax_request()
+{
+   var xmlhttp;
+   if(window.XMLHttpRequest)
+   {
+      //code for IE7+,Firefox,Chrome,Opera,Safari
+      xmlhttp=new XMLHttpRequest();
+   }
+   else
+   {
+      //code for IE6,IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xmlhttp.onreadystatechange=function()
+   {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {  
+         s=xmlhttp.responseText;
+	 document.getElementById("data_table").innerHTML=s;
+      }
+   }
+   xmlhttp.open("GET","/risk_data/",true);
+   xmlhttp.setRequestHeader("X-Requested-With","XMLHttpRequest");
+   xmlhttp.send();
+}
+setInterval("ajax_request()","10");
+</script>
+</head>
+
+<body  onload="time()">
+<h1 class="title">风险控制管理</h1>
+<p>选择需要显示的天数：</p>
+<select id="subject" name="subject" onchange="time()">
+  <option value="1">一天</option>
+  <option value="2">二天</option>
+  <option value="3">三天</option>
+  <option value="4">四天</option>
+  <option value="5">五天</option>
+  <option value="6">六天</option>
+  <option value="7">七天</option>
+</select>
+
+<div id="data_table">
+<table id="customers">
+<tr>
+  <th> </th>
+  <th> </th>
+  <th id="day_now0"></th>
+  <th id="day_now1"></th>
+  <th id="day_now2"></th>
+  <th id="day_now3"></th>
+</tr>
+{% for combin in combins %}
+<tr>
+   <th rowspan="4">{{combin}}</th>
+   <td>组合-指数</td>
+   <td>{{combin.data0}}</td>
+   <td>2972.78</td>
+   <td>5270.20</td>
+   <td>-6231.48</td>
+</tr>
+<tr class="alt">
+   <td>组合-指数(point)</td>
+   <td>{{combin.data1}}</td>
+   <td>14.86</td>
+   <td>26.35</td>
+   <td>-31.16</td>
+</tr>
+<tr>
+   <td>组合-指数(percent)</td>
+   <td>{{combin.data2}}</td>
+   <td>14.86</td>
+   <td>26.35</td>
+   <td>-31.16</td>
+</tr>
+<tr>
+   <td>alpha基差</td>
+   <td>{{combin.alpha_basis}}</td>
+   <td>0.00</td>
+   <td>0.00</td>
+   <td>0.00</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<ul class="breadcrumb">
+  <li><a href="#">返回顶部</a></li>
+  <li><a href="../index/">股票监控</a></li>
+  <li><a href="../index2/">组合管理</a></li>
+</ul>
+</body>
+</html>

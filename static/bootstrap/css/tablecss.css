@@ -1,0 +1,60 @@
+#customers
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:60%;
+	border-collapse:collapse;
+	margin-left:auto;
+	margin-right:auto;
+}
+#customers td, #customers th 
+{
+	font-size:1em;
+	border:1px solid #F0F0F0;
+	padding:3px 7px 2px 7px;
+}
+#customers th 
+{
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#A7C942;
+	color:#ffffff;
+}
+#customers tr.alt td 
+{
+	color:#000000;
+	background-color:#EAF2D3;
+}
+.title
+{
+	text-align:center;
+	font-family:"Times New Roman",Times,serif;
+	font-size:40px;
+}
+#background
+{
+	opacity:0.2;
+        filter:alpha(opacity=20); /* For IE8 and earlier */
+}
+body
+{
+	background-image:url('/home/calc4/RiskControl/templates/量道LOGO.png');
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:left bottom;
+	margin-left:100px;
+}
+ul.breadcrumb {
+        padding: 8px 16px;
+        list-style: none;
+        background-color: #eee;
+	text-align:right;
+}
+ul.breadcrumb li {display: inline;}
+ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: "/\00a0";
+}
+ul.breadcrumb li a {color: green;}
